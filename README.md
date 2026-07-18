@@ -120,6 +120,8 @@ Included:
 
 ## License
 
-Copyright © 2026 Chris Lake.
+This project is proprietary.
 
-All rights reserved.
+See the [LICENSE](LICENSE) file for details.
+
+Copyright © 2026 Chris Lake.
