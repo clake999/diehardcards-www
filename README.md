@@ -1,23 +1,125 @@
 # DieHardCards Website
 
-Public landing page for [diehard.cards](https://diehard.cards).
+Public landing page for **https://diehard.cards**.
+
+This repository contains the static marketing and landing site for the DieHardCards platform. It is intentionally separate from the main DHC application to allow independent deployment and iteration.
+
+---
 
 ## Hosting
 
-The site is deployed through Cloudflare Pages using GitHub integration.
+The site is deployed using **Cloudflare Workers Static Assets** with **GitHub integration**.
 
-## Structure
+Deployment workflow:
 
-- `index.html` — landing page
-- `assets/css/styles.css` — site styling
-- `assets/images/` — site images and branding assets
+```text
+Local Development
+        │
+        ▼
+git commit
+        │
+        ▼
+git push origin main
+        │
+        ▼
+GitHub
+        │
+        ▼
+Cloudflare Build
+        │
+        ▼
+Automatic Deployment
+        │
+        ▼
+https://diehard.cards
+```
 
-## Local Preview
+Every push to the `main` branch automatically triggers a new deployment.
 
-From the repository root, run:
+---
 
-    python3 -m http.server 8000
+## Repository Structure
 
-Then open:
+```
+public/
+├── index.html
+├── assets/
+│   └── css/
+│       └── styles.css
+├── favicon.svg
+├── robots.txt
+└── sitemap.xml
 
-    http://localhost:8000
+wrangler.jsonc
+README.md
+.gitignore
+```
+
+---
+
+## Local Development
+
+From the repository root:
+
+```bash
+cd public
+python3 -m http.server 8000
+```
+
+Browse to:
+
+```
+http://localhost:8000
+```
+
+---
+
+## Production
+
+Primary URL:
+
+```
+https://diehard.cards
+```
+
+Worker Preview:
+
+```
+https://diehardcards-www.clake99.workers.dev
+```
+
+---
+
+## SEO
+
+Included:
+
+- favicon
+- robots.txt
+- sitemap.xml
+- canonical URL
+- Open Graph metadata
+- Twitter Card metadata
+
+---
+
+## Future Enhancements
+
+- Product screenshots
+- Early Access signup
+- Feature roadmap
+- Hans Imaging section
+- DHC application launch button (`app.diehard.cards`)
+- Privacy Policy
+- Terms of Service
+- 404 page
+- Web App Manifest
+- Social sharing image
+
+---
+
+## License
+
+Copyright © 2026 Chris Lake.
+
+All rights reserved.
