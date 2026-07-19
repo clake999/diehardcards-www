@@ -1,127 +1,99 @@
 # DieHardCards Website
 
-Public landing page for **https://diehard.cards**.
+## Overview
 
-This repository contains the static marketing and landing site for the DieHardCards platform. It is intentionally separate from the main DHC application to allow independent deployment and iteration.
+This repository contains the public marketing website for the DieHardCards platform at [diehard.cards](https://diehard.cards). The site is static, hosted on Cloudflare, deployed from GitHub, and intentionally lightweight so it can be maintained and shipped independently from the main DieHardCards application.
 
----
+## Technology
 
-## Hosting
+- HTML5
+- CSS3
+- Cloudflare Worker Static Assets
+- GitHub source control
+- Cloudflare automatic deployments
 
-The site is deployed using **Cloudflare Workers Static Assets** with **GitHub integration**.
-
-Deployment workflow:
-
-```text
-Local Development
-        │
-        ▼
-git commit
-        │
-        ▼
-git push origin main
-        │
-        ▼
-GitHub
-        │
-        ▼
-Cloudflare Build
-        │
-        ▼
-Automatic Deployment
-        │
-        ▼
-https://diehard.cards
-```
-
-Every push to the `main` branch automatically triggers a new deployment.
-
----
+The site uses no application framework, client-side library, or build system.
 
 ## Repository Structure
 
-```
+```text
 public/
-├── index.html
+├── .well-known/
+│   └── security.txt
 ├── assets/
-│   └── css/
-│       └── styles.css
+│   ├── css/
+│   │   └── styles.css
+│   ├── icons/
+│   │   ├── favicon and touch icons
+│   │   └── manifest icons
+│   └── images/
+│       └── DieHardCards logo assets
+├── security/
+│   └── index.html
+├── index.html
 ├── favicon.svg
 ├── robots.txt
+├── site.webmanifest
 └── sitemap.xml
 
-wrangler.jsonc
+LICENSE
 README.md
-.gitignore
+wrangler.jsonc
 ```
 
----
+Cloudflare serves the contents of `public/` as the website's static assets.
 
-## Local Development
+## Branding
 
-From the repository root:
+Production web assets live under [`public/assets/`](public/assets/). The website uses the official DieHardCards branding, including the approved transparent logo and its responsive raster derivatives. Favicon, Apple Touch Icon, and manifest icon assets are generated from the approved logo and live under [`public/assets/icons/`](public/assets/icons/).
+
+## Security
+
+The website currently includes:
+
+- A standard [`security.txt`](public/.well-known/security.txt) security contact
+- A [responsible disclosure page](public/security/index.html)
+- HTTPS
+- Cloudflare edge protection
+- Cloudflare Bot Fight Mode
+
+Security reports can be sent to `security@diehard.cards`.
+
+## Development
+
+From the repository root, start a local static server:
 
 ```bash
-cd public
-python3 -m http.server 8000
+python3 -m http.server 8000 --directory public
 ```
 
-Browse to:
+Then open [http://localhost:8000](http://localhost:8000).
 
-```
-http://localhost:8000
-```
+## Deployment
 
----
+The production deployment flow is:
 
-## Production
-
-Primary URL:
-
-```
-https://diehard.cards
+```text
+GitHub
+   ↓
+Cloudflare
+   ↓
+diehard.cards
 ```
 
-Worker Preview:
-
-```
-https://diehardcards-www.clake99.workers.dev
-```
-
----
-
-## SEO
-
-Included:
-
-- favicon
-- robots.txt
-- sitemap.xml
-- canonical URL
-- Open Graph metadata
-- Twitter Card metadata
-
----
-
-## Future Enhancements
-
-- Product screenshots
-- Early Access signup
-- Feature roadmap
-- Hans Imaging section
-- DHC application launch button (`app.diehard.cards`)
-- Privacy Policy
-- Terms of Service
-- 404 page
-- Web App Manifest
-- Social sharing image
-
----
+Every push to the `main` branch automatically deploys the contents of `public/` through Cloudflare Worker Static Assets.
 
 ## License
 
-This project is proprietary.
+This project is proprietary. All source code, documentation, branding, logos, and other repository content are covered by the existing [LICENSE](LICENSE). Public visibility does not grant permission to copy, modify, distribute, or reuse the project.
 
-See the [LICENSE](LICENSE) file for details.
+Copyright © 2026 Chris Lake. All rights reserved.
 
-Copyright © 2026 Chris Lake.
+## Future Ideas
+
+- About page
+- Privacy Policy
+- Terms of Service
+- Product screenshots
+- Hans hardware page
+- Blog / Updates
