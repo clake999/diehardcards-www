@@ -1,0 +1,13 @@
+{
+  "name": "DieHardCards",
+  "short_name": "DieHardCards",
+  "description": "Collection management and card intelligence for serious collectors.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#f6f3ec",
+  "theme_color": "#0c2340",
+  "icons": [
+    {"src": "/assets/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/assets/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}
