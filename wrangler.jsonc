@@ -2,9 +2,17 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "diehardcards-www",
   "compatibility_date": "2026-07-18",
+  "main": "src/index.js",
   "workers_dev": true,
   "preview_urls": true,
+  "vars": {
+    "TURNSTILE_SITE_KEY": "REPLACE_WITH_PRODUCTION_TURNSTILE_SITE_KEY",
+    "CONTACT_TO_EMAIL": "hello@diehard.cards",
+    "CONTACT_FROM_EMAIL": "no-reply@diehard.cards"
+  },
   "assets": {
-    "directory": "./public"
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
   }
 }
