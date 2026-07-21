@@ -6,7 +6,7 @@
   "workers_dev": true,
   "preview_urls": true,
   "vars": {
-    "TURNSTILE_SITE_KEY": "REPLACE_WITH_PRODUCTION_TURNSTILE_SITE_KEY",
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAD6gSuBJvdqkyBHT",
     "CONTACT_TO_EMAIL": "hello@diehard.cards",
     "CONTACT_FROM_EMAIL": "no-reply@diehard.cards"
   },
