@@ -6,6 +6,8 @@ This repository contains the public marketing website for [diehard.cards](https:
 
 The public site remains static HTML and CSS. A small Cloudflare Worker handles the contact form at `POST /api/contact`; no submission database is used.
 
+Website Alpha 1.1 contact form functionality is complete and deployed at [https://diehard.cards](https://diehard.cards). End-to-end production delivery to `hello@diehard.cards` was successfully verified on July 21, 2026.
+
 ## Technology
 
 - HTML5 and CSS3
@@ -46,18 +48,18 @@ wrangler.jsonc
 The form uses this request path:
 
 ```text
-Browser form
+Browser
    ↓ POST /api/contact
 Cloudflare Worker
    ↓ Turnstile Siteverify
-Strict validation and anti-abuse checks
+Server-side validation and anti-abuse controls
    ↓ SendGrid v3 Mail Send
 hello@diehard.cards
 ```
 
-`GET /api/contact/config` returns only the public Turnstile site key needed for build-free widget rendering. Static files remain asset-first; only `/api/*` is configured to invoke the Worker first.
+Before submission, the frontend calls `GET /api/contact/config`. This endpoint returns the public `TURNSTILE_SITE_KEY` so the browser can render the Turnstile widget without a build step. It does not return secrets or the email configuration. Static files remain asset-first; only `/api/*` is configured to invoke the Worker first.
 
-The Worker does not persist submissions. It does not log names, email addresses, messages, Turnstile tokens, or upstream response bodies.
+The Worker sends accepted submissions directly to SendGrid. The application uses no database for contact submissions and does not store them. It also does not log names, email addresses, messages, Turnstile tokens, or upstream response bodies.
 
 ### Required bindings
 
@@ -66,9 +68,9 @@ Secrets configured in Cloudflare, never committed:
 - `TURNSTILE_SECRET_KEY`
 - `SENDGRID_API_KEY`
 
-Non-secret variables:
+Public, non-secret configuration in `wrangler.jsonc`:
 
-- `TURNSTILE_SITE_KEY`
+- `TURNSTILE_SITE_KEY` — the production site key is intentionally public and is supplied to the frontend by the config endpoint
 - `CONTACT_TO_EMAIL` — production value: `hello@diehard.cards`
 - `CONTACT_FROM_EMAIL` — production value: `no-reply@diehard.cards`
 
@@ -76,13 +78,15 @@ The SendGrid From address must be an authenticated sender or belong to an authen
 
 ## Local Development
 
-Node.js is sufficient; no package installation is required. Wrangler may be invoked through `npx`:
+Node.js and npm (including `npx`) are required; no project package installation is required. Create the ignored local variable file:
 
 ```bash
 cp .dev.vars.example .dev.vars
 ```
 
-Edit the ignored `.dev.vars` file and replace the SendGrid placeholder with a restricted development key. The example contains Cloudflare's documented always-pass Turnstile test site key and matching test secret. Those test credentials must never be used in production.
+Edit `.dev.vars` and replace the SendGrid placeholder with a restricted development key. The example contains Cloudflare's documented always-pass Turnstile test site key and matching test secret. Those test credentials must never be used in production.
+
+Cloudflare's always-pass test credentials can make Siteverify return the synthetic hostname `example.com`. The Worker accepts that Siteverify hostname only when the incoming Worker request hostname is exactly `localhost` or `127.0.0.1`. This is a local-test-specific hostname rule. Production validation remains exact: the incoming hostname must be `diehard.cards` or `www.diehard.cards`, and the Siteverify hostname must match it.
 
 Start the complete Worker and static-assets preview:
 
@@ -97,7 +101,7 @@ A Python static server can still preview HTML and CSS, but it cannot execute `/a
 Run the dependency-free tests:
 
 ```bash
-node --experimental-default-type=module --test tests/contact.test.mjs
+node --test tests/contact.test.mjs
 ```
 
 ## Security Controls
@@ -105,30 +109,34 @@ node --experimental-default-type=module --test tests/contact.test.mjs
 Contact submissions are protected by:
 
 - Server-side Turnstile verification, including production hostname matching
+- Exact production hostname validation restricted to `diehard.cards` and `www.diehard.cards`
 - Same-origin `Origin` validation
 - A hidden honeypot
 - A three-second minimum completion time and two-hour maximum form age
 - A 16 KiB request-body limit
-- Strict content-type and JSON parsing
-- Length, format, control-character, and interest-allowlist validation
+- An `application/json` content-type requirement and strict JSON parsing
+- Name, email, message, token, timestamp, control-character, and interest-allowlist validation; messages are limited to 2,000 characters
 - Fixed server-controlled SendGrid recipient and sender
 - HTML escaping before email rendering
+- Generic client-facing rejection messages for validation and suspected abuse
 - `no-store` and `nosniff` API response headers
+- No application database or storage of contact submissions
+- Production secrets stored as encrypted Cloudflare Worker secrets, not in Git
 
 These controls do not claim to provide durable rate limiting. A Cloudflare Rate Limiting rule can later be applied specifically to `/api/contact` for additional edge protection.
 
-## Production Setup and Deployment
+## Production Configuration and Deployment
 
-Before enabling the form in production:
+The production form uses a real Cloudflare Turnstile widget in Managed mode. Its allowed hostnames are exactly `diehard.cards` and `www.diehard.cards`. The production configuration and verification procedure is:
 
-1. Create a Turnstile widget restricted to `diehard.cards` and, if used, `www.diehard.cards`.
-2. Replace the `TURNSTILE_SITE_KEY` placeholder in `wrangler.jsonc` with the public production site key.
-3. Authenticate `diehard.cards` in SendGrid or verify the configured From address.
-4. Create a restricted SendGrid API key with only Mail Send permission.
-5. Allow the GitHub-to-Cloudflare deployment to publish the Worker and static assets.
-6. In the Cloudflare dashboard, open the production Worker settings and add encrypted secrets named `TURNSTILE_SECRET_KEY` and `SENDGRID_API_KEY`.
-7. Confirm the three non-secret variables match the intended production values.
-8. If secrets were added after the initial deployment, publish the resulting Worker settings/version as required by the dashboard workflow.
+1. Create a Cloudflare Turnstile widget and select Managed mode.
+2. Add `diehard.cards` and `www.diehard.cards` as the widget's allowed hostnames.
+3. Put the public production `TURNSTILE_SITE_KEY` in `wrangler.jsonc`, alongside the non-secret recipient and sender variables.
+4. Authenticate the sender in SendGrid and create a restricted SendGrid API key with Mail Send permission.
+5. Add `TURNSTILE_SECRET_KEY` and `SENDGRID_API_KEY` as encrypted Cloudflare Worker secrets.
+6. Deploy the Worker and static assets through the existing GitHub-to-Cloudflare workflow.
+7. Perform a real form submission at `https://diehard.cards` using the production Turnstile widget.
+8. Confirm the message is delivered to `hello@diehard.cards` from `DieHardCards Website <no-reply@diehard.cards>` and that replies use the submitted address.
 
 Do not put either secret into `wrangler.jsonc`, `.dev.vars.example`, HTML, browser JavaScript, repository settings visible to clients, or Git history.
 
@@ -145,6 +153,23 @@ Do not put either secret into `wrangler.jsonc`, `.dev.vars.example`, HTML, brows
 - Verify SendGrid failure produces only the generic browser message.
 - Verify `/`, `/security/`, images, icons, and other static assets still bypass Worker-first execution.
 - Review Turnstile Analytics and Worker error metrics without adding personal-data logging.
+
+## Verification Record
+
+The Alpha 1.1 contact form has been verified in both local and production environments.
+
+Local verification:
+
+- Automated test suite: 10 passed, 0 failed.
+- End-to-end submission returned HTTP `201 Created`.
+- Email delivery succeeded.
+
+Production verification completed July 21, 2026:
+
+- The production Turnstile widget loaded successfully.
+- A real production form submission succeeded.
+- The resulting email was delivered to `hello@diehard.cards`.
+- The delivered message included the selected interest, message, submission timestamp, and Cloudflare country metadata; country enrichment returned `US` in the verified submission.
 
 ## Branding
 
