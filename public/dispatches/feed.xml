@@ -5,14 +5,14 @@
         <link>https://diehard.cards/dispatches/</link>
         <description>Notes on interesting cards, collecting observations, Hans progress, and the work behind DieHardCards.</description>
         <language>en-us</language>
-        <lastBuildDate>Tue, 21 Jul 2026 12:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 22 Jul 2026 12:00:00 GMT</lastBuildDate>
         <atom:link href="https://diehard.cards/dispatches/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title>Welcome to Cardboard Dispatches</title>
-            <link>https://diehard.cards/dispatches/welcome-to-cardboard-dispatches/</link>
-            <guid isPermaLink="true">https://diehard.cards/dispatches/welcome-to-cardboard-dispatches/</guid>
-            <pubDate>Tue, 21 Jul 2026 12:00:00 GMT</pubDate>
-            <description>An introduction to Cardboard Dispatches: thoughtful notes from the hobby and behind the scenes at DieHardCards.</description>
+            <title>Field Note 001: Introducing Hans</title>
+            <link>https://diehard.cards/dispatches/introducing-hans/</link>
+            <guid isPermaLink="true">https://diehard.cards/dispatches/introducing-hans/</guid>
+            <pubDate>Wed, 22 Jul 2026 12:00:00 GMT</pubDate>
+            <description>Why consistent card images matter, and how Hans is being developed to turn careful captures into collector intelligence.</description>
         </item>
     </channel>
 </rss>

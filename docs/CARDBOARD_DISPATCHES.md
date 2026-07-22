@@ -4,13 +4,17 @@ Cardboard Dispatches is intentionally static and Git-managed. Each article is a
 complete HTML document served by Cloudflare static assets. There is no CMS,
 database, build command, package dependency, or client-side rendering.
 
-## Publish a dispatch
+## Publish a Field Note
 
-1. Copy the introductory article directory as the working example:
+Field Notes are the numbered recurring series within Cardboard Dispatches. Use
+the detailed [Field Notes editorial guide](FIELD_NOTES.md) and its blank
+[article template](field-note-template.html) for new posts.
+
+1. Copy the blank Field Note template:
 
    ```bash
-   cp -R public/dispatches/welcome-to-cardboard-dispatches \\
-     public/dispatches/your-post-slug
+   mkdir -p public/dispatches/your-post-slug
+   cp docs/field-note-template.html public/dispatches/your-post-slug/index.html
    ```
 
 2. In the copied `index.html`, update every clearly identifiable article value:
@@ -66,7 +70,6 @@ database, build command, package dependency, or client-side rendering.
 - Keep prose readable without JavaScript and avoid third-party embeds or
   tracking.
 
-The existing introductory article is the reusable post template as well as the
-first published example. Copying it keeps metadata and shared navigation
-consistent without introducing a generator that would be disproportionate for
-occasional posts.
+The blank template preserves metadata, article structure, shared navigation,
+optional editorial components, and previous/next links. Field Note 001 is the
+fully written reference implementation.

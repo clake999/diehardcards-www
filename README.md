@@ -45,7 +45,9 @@ wrangler.jsonc
 ```
 
 Instructions for publishing a static editorial post are in
-[`docs/CARDBOARD_DISPATCHES.md`](docs/CARDBOARD_DISPATCHES.md).
+[`docs/CARDBOARD_DISPATCHES.md`](docs/CARDBOARD_DISPATCHES.md). Field Note
+voice, numbering, structure, and the reusable article template are documented in
+[`docs/FIELD_NOTES.md`](docs/FIELD_NOTES.md).
 
 ## Contact Form
 
