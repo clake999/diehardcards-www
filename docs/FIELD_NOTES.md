@@ -135,6 +135,27 @@ Field Note 001 as the fully written reference.
 13. Review the complete diff before committing and pushing through the normal
     repository workflow.
 
+## Starting a New Field Note
+
+From the repository root, run:
+
+```bash
+./scripts/new-field-note.sh
+```
+
+The interactive helper determines the next unused Field Note number and asks
+for the title, optional subtitle, category, and optional URL slug. It creates:
+
+- `drafts/FN-XXX.md` — the Markdown writing draft
+- `draft-assets/FN-XXX/` — the matching workspace for optional photos
+
+The draft includes the standard metadata, writing sections, and simple figure
+notation. Drafts and their assets are intentional source material and remain
+trackable in Git.
+
+This command starts a draft only. It does not convert, publish, commit, push, or
+deploy the article.
+
 ## Editorial principles
 
 - Publish only when there is something specific to say.
