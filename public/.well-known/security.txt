@@ -5,7 +5,7 @@ Canonical: https://diehard.cards/.well-known/security.txt
 Preferred-Languages: en
 Expires: 2027-07-18T00:00:00Z
 
-Policy: https://diehard.cards/security
-Acknowledgments: https://diehard.cards/security
+Policy: https://diehard.cards/security/
+Acknowledgments: https://diehard.cards/security/
 
 Copyright: Copyright © 2026 Chris Lake. All rights reserved.

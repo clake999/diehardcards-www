@@ -43,15 +43,21 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <header class="site-header">
         <nav class="site-nav" aria-label="Primary navigation">
-            <a href="#about">About</a>
-            <a href="/security/">Security</a>
-            <a class="button button--compact" href="#learn-more">Contact Us</a>
+            <a class="site-brand" href="/" aria-label="DieHardCards home" aria-current="page">DieHardCards</a>
+            <div class="site-nav__links">
+                <a href="#about">About</a>
+                <a href="/dispatches/">Dispatches</a>
+                <a href="/security/">Security</a>
+                <a class="button button--compact" href="#learn-more">Contact Us</a>
+            </div>
         </nav>
     </header>
 
-    <main class="hero">
+    <main class="hero" id="main-content">
         <div class="hero__content">
             <img
                 class="brand-logo"
@@ -61,6 +67,8 @@
                 width="512"
                 height="512"
                 alt="DieHardCards"
+                decoding="async"
+                fetchpriority="high"
             >
 
             <p class="eyebrow">Collection intelligence</p>
@@ -121,6 +129,110 @@
                     valuation, alerts, and collector-focused automation.
                 </p>
             </article>
+        </section>
+
+        <section class="journey-section" aria-labelledby="journey-heading">
+            <div class="section-heading">
+                <p class="eyebrow">The collecting journey</p>
+                <h2 id="journey-heading">From the card in hand to the story it tells.</h2>
+                <p>
+                    DHC is being developed as a collector operating system—not
+                    simply an inventory list. Current private-alpha capabilities
+                    connect catalog knowledge, owned cards, and market evidence.
+                </p>
+            </div>
+
+            <div class="capability-grid">
+                <article>
+                    <p class="capability-grid__number" aria-hidden="true">01</p>
+                    <h3>Know the Card</h3>
+                    <p>
+                        Explore canonical catalogs, capture both sides of a card,
+                        and review OCR-assisted matches before accepting a verified
+                        identity.
+                    </p>
+                </article>
+                <article>
+                    <p class="capability-grid__number" aria-hidden="true">02</p>
+                    <h3>Understand the Collection</h3>
+                    <p>
+                        Manage owned cards, inspect images closely, and see
+                        collection context through Hobby Journey insights.
+                    </p>
+                </article>
+                <article>
+                    <p class="capability-grid__number" aria-hidden="true">03</p>
+                    <h3>Follow the Market</h3>
+                    <p>
+                        Record source-attributed market evidence and view live DHC
+                        Market Value summaries with confidence and source context.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <aside class="build-status" aria-labelledby="build-status-heading">
+            <h2 id="build-status-heading">Current build</h2>
+            <dl>
+                <div>
+                    <dt>DHC Platform</dt>
+                    <dd>Private Alpha</dd>
+                </div>
+                <div>
+                    <dt>Hans Imaging Station</dt>
+                    <dd>In Development</dd>
+                </div>
+                <div>
+                    <dt>Cardboard Dispatches</dt>
+                    <dd>Now Publishing</dd>
+                </div>
+            </dl>
+        </aside>
+
+        <section class="hans-section" aria-labelledby="hans-heading">
+            <div>
+                <p class="eyebrow">Imaging direction</p>
+                <h2 id="hans-heading">Meet Hans.</h2>
+            </div>
+            <div>
+                <p class="hans-section__lead">
+                    A purpose-built card imaging station being developed to create
+                    repeatable front-and-back captures and connect physical cards
+                    with DHC intelligence.
+                </p>
+                <p>
+                    Hans remains in active development and is not currently
+                    offered for sale.
+                </p>
+                <a class="text-link" href="#learn-more">Tell us you’re interested in Hans <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
+
+        <section class="dispatch-teaser" aria-labelledby="dispatch-heading">
+            <div class="section-heading">
+                <p class="eyebrow">From the workbench</p>
+                <h2 id="dispatch-heading">Cardboard Dispatches</h2>
+                <p>
+                    Notes on interesting cards, collecting observations, Hans
+                    progress, and the work behind DieHardCards.
+                </p>
+            </div>
+            <article class="dispatch-card">
+                <p class="dispatch-card__meta">
+                    <time datetime="2026-07-21">July 21, 2026</time>
+                    <span>Introduction</span>
+                </p>
+                <h3>
+                    <a href="/dispatches/welcome-to-cardboard-dispatches/">
+                        Welcome to Cardboard Dispatches
+                    </a>
+                </h3>
+                <p>
+                    A home for thoughtful notes from across the hobby and behind
+                    the scenes at DHC.
+                </p>
+            </article>
+            <a class="text-link" href="/dispatches/">View all dispatches <span aria-hidden="true">→</span></a>
         </section>
 
         <section class="contact-section" id="learn-more" aria-labelledby="contact-heading">
@@ -192,7 +304,10 @@
             All rights reserved.
         </p>
         <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="/">Home</a>
+            <a href="/dispatches/">Dispatches</a>
             <a href="/security/">Security</a>
+            <a href="/.well-known/security.txt">Security.txt</a>
             <a href="#learn-more">Contact</a>
         </nav>
     </footer>

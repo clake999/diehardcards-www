@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Cardboard Dispatches</title>
+        <link>https://diehard.cards/dispatches/</link>
+        <description>Notes on interesting cards, collecting observations, Hans progress, and the work behind DieHardCards.</description>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 21 Jul 2026 12:00:00 GMT</lastBuildDate>
+        <atom:link href="https://diehard.cards/dispatches/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title>Welcome to Cardboard Dispatches</title>
+            <link>https://diehard.cards/dispatches/welcome-to-cardboard-dispatches/</link>
+            <guid isPermaLink="true">https://diehard.cards/dispatches/welcome-to-cardboard-dispatches/</guid>
+            <pubDate>Tue, 21 Jul 2026 12:00:00 GMT</pubDate>
+            <description>An introduction to Cardboard Dispatches: thoughtful notes from the hobby and behind the scenes at DieHardCards.</description>
+        </item>
+    </channel>
+</rss>

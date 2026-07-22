@@ -8,7 +8,21 @@
 
     <meta name="description" content="Security policy and responsible vulnerability disclosure for DieHardCards.">
 
-    <link rel="canonical" href="https://diehard.cards/security">
+    <link rel="canonical" href="https://diehard.cards/security/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Security | DieHardCards">
+    <meta property="og:description" content="Security policy and responsible vulnerability disclosure for DieHardCards.">
+    <meta property="og:url" content="https://diehard.cards/security/">
+    <meta property="og:image" content="https://diehard.cards/assets/images/diehardcards-logo-1024.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="DieHardCards logo">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Security | DieHardCards">
+    <meta name="twitter:description" content="Security policy and responsible vulnerability disclosure for DieHardCards.">
+    <meta name="twitter:image" content="https://diehard.cards/assets/images/diehardcards-logo-1024.png">
+    <meta name="twitter:image:alt" content="DieHardCards logo">
 
     <meta name="theme-color" content="#0c2340">
 
@@ -21,70 +35,87 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<div class="container">
+    <header class="site-header">
+        <nav class="site-nav" aria-label="Primary navigation">
+            <a class="site-brand" href="/" aria-label="DieHardCards home">DieHardCards</a>
+            <div class="site-nav__links">
+                <a href="/#about">About</a>
+                <a href="/dispatches/">Dispatches</a>
+                <a href="/security/" aria-current="page">Security</a>
+                <a class="button button--compact" href="/#learn-more">Contact Us</a>
+            </div>
+        </nav>
+    </header>
 
-<a class="brand-link" href="/" aria-label="DieHardCards home">
-<img class="brand-logo brand-logo--small" src="/assets/images/diehardcards-logo-512.png" width="512" height="512" alt="DieHardCards">
-</a>
+    <main class="content-page content-page--wide" id="main-content">
+        <p class="eyebrow">Trust &amp; safety</p>
+        <h1>Security</h1>
 
-<h1>Security</h1>
+        <p class="content-page__intro">
+            Security is designed into DieHardCards from the beginning. We use
+            responsible disclosure, modern infrastructure, and continuous
+            improvement to protect collectors, their collections, and the
+            platform.
+        </p>
 
-<p>
-DieHardCards is committed to protecting the privacy and security of our users,
-their collections, and our platform.
-</p>
+        <section aria-labelledby="responsible-disclosure">
+            <h2 id="responsible-disclosure">Responsible Disclosure</h2>
+            <p>
+                If you believe you have discovered a security vulnerability, we
+                encourage responsible disclosure.
+            </p>
+            <p>
+                Send reports to
+                <strong><a href="mailto:security@diehard.cards">security@diehard.cards</a></strong>.
+            </p>
+        </section>
 
-<h2>Responsible Disclosure</h2>
+        <section aria-labelledby="what-to-include">
+            <h2 id="what-to-include">What to Include</h2>
+            <ul>
+                <li>Description of the issue</li>
+                <li>Steps to reproduce</li>
+                <li>Affected URLs or features</li>
+                <li>Proof-of-concept if available</li>
+                <li>Your contact information</li>
+            </ul>
+        </section>
 
-<p>
-If you believe you have discovered a security vulnerability, we encourage
-responsible disclosure.
-</p>
+        <section aria-labelledby="our-commitment">
+            <h2 id="our-commitment">Our Commitment</h2>
+            <ul>
+                <li>Prompt acknowledgement of reports</li>
+                <li>Investigation and remediation when appropriate</li>
+                <li>Coordination with reporters before public disclosure</li>
+            </ul>
+            <p>
+                Please do not access, modify, or delete data that does not belong
+                to you, perform denial-of-service attacks, or disrupt service
+                availability while testing.
+            </p>
+        </section>
 
-<p>
-Please email:
-</p>
+        <aside class="disclosure-note" aria-labelledby="disclosure-standard">
+            <h2 id="disclosure-standard">Security contact details</h2>
+            <p>
+                Researchers and automated tools can also use our
+                <a href="/.well-known/security.txt">security.txt disclosure record</a>.
+            </p>
+        </aside>
+    </main>
 
-<p>
-<strong>
-<a href="mailto:security@diehard.cards">
-security@diehard.cards
-</a>
-</strong>
-</p>
-
-<h2>What to Include</h2>
-
-<ul>
-<li>Description of the issue</li>
-<li>Steps to reproduce</li>
-<li>Affected URLs or features</li>
-<li>Proof-of-concept if available</li>
-<li>Your contact information</li>
-</ul>
-
-<h2>Our Commitment</h2>
-
-<ul>
-<li>Prompt acknowledgement of reports</li>
-<li>Investigation and remediation when appropriate</li>
-<li>Coordination with reporters before public disclosure</li>
-</ul>
-
-<p>
-Please do not access, modify, or delete data that does not belong to you,
-perform denial-of-service attacks, or disrupt service availability while
-testing.
-</p>
-
-<hr>
-
-<p>
-© 2026 DieHardCards. All rights reserved.
-</p>
-
-</div>
+    <footer class="site-footer">
+        <p>&copy; 2026 DieHardCards. All rights reserved.</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="/">Home</a>
+            <a href="/dispatches/">Dispatches</a>
+            <a href="/security/" aria-current="page">Security</a>
+            <a href="/.well-known/security.txt">Security.txt</a>
+            <a href="/#learn-more">Contact</a>
+        </nav>
+    </footer>
 
 </body>
 </html>

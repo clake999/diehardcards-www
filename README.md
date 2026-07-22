@@ -37,11 +37,15 @@ public/
 │   ├── icons/
 │   └── images/
 ├── security/index.html
+├── dispatches/             # Static Cardboard Dispatches index, RSS, and posts
 └── index.html
 
 .dev.vars.example
 wrangler.jsonc
 ```
+
+Instructions for publishing a static editorial post are in
+[`docs/CARDBOARD_DISPATCHES.md`](docs/CARDBOARD_DISPATCHES.md).
 
 ## Contact Form
 
